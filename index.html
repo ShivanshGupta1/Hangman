@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Hangman</title>
+</head>
+<style>
+
+ 
+    #facewitheyes{
+        width: 100px;
+        height: 100px;
+      margin-left: 600px;
+
+    
+    }
+    .nose{
+        width: 25px;
+        height: 20px;
+        margin-left: 630px;
+        margin-bottom: 40px;
+        margin-top: -60px;
+
+    }
+    .smile{
+        width: 45px;
+        height: 20px;
+        margin-left: 630px;
+        margin-bottom: 60px;
+        margin-top: -40px;
+
+
+    }
+
+    .line{
+        align-self: center;
+
+        width: 100px;
+        height: 100px;
+        margin-left: 600px;
+        margin-top: -65px;
+     
+      
+    }
+    .hand1{
+        height: 100px;
+        margin-left: 580px;
+        margin-top: -65px;
+    
+    }
+    .hand2{
+        height:70px;
+        width: 50px;
+        margin-left: 650px;
+        margin-top: -75px;
+     
+    }
+    .leg1{
+        height: 100px;
+        margin-left: 580px;
+        margin-top: -130px;
+      
+    }
+    .leg2{
+        height:70px;  
+        width: 50px;
+        margin-left: 650px;
+        margin-top: -100px;
+        display: none;
+    }
+
+    .line3{
+width: 100px;
+height: 100px;
+margin-left: 600px;
+margin-bottom: -80px;
+
+    }
+
+    .line4{
+width: 100px;
+height: 100px;
+margin-left: 600px;
+
+
+    }
+  
+  
+
+</style>
+<body onload="myFunction()" style="margin-top: 100px;">
+    <h1 style="text-align: center;" >Hangman</h1>
+    <h2 style="text-align: center;">The word is <strong id="bold"></strong></h2>
+    <h3 style="text-align: center;" >Mode -  <code>EASY</code></h3>
+    <img class = "line3" src="https://img.icons8.com/ios/452/horizontal-line.png" alt="">
+    <img style="display: none;" id="line2" class = "line4" src="https://lh3.googleusercontent.com/proxy/pHLefIQGgAwP5zuMFf0OY3tiX3dHTrebHaQQcOsfqt_gx7T-A3zp1JJhhDwbTvgRPYhKQbTO6BArx6qGx4hlI9h1l6ZY0jOB_Bf5MxDCjWZ98UJU0qT77Vn5Xk93qDI" alt="">
+    <div>
+        
+       
+    
+       <img id="facewitheyes" src="https://cdn0.iconfinder.com/data/icons/messages-chat-smileys/24/chat-message-only-eyes-emoji-smiley-face-512.png" alt="" style="display: none;"  >
+        <img id="nose" class = "nose" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Black_triangle_with_thick_white_border.svg/1200px-Black_triangle_with_thick_white_border.svg.png" alt="" style="display: none;" >
+        <img id="smile" class="smile" src="https://logodix.com/logo/395018.jpg" alt=""style="display: none;" >
+        <br>
+       
+        <img id="line" class = "line" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAADFBMVEX///8DAQQAAAD8/PxJOIA3AAABEUlEQVR4nO3PsQ3AMAzAsNT5/+d80M2ABuoC8Zzd7sz318xdPtiOkLAfIWE/QsJ+hIT9CAn7ERL2IyTsR0jYj5CwHyFhP0LCfoSE/QgJ+xES9iMk7EdI2I+QsB8hYT9Cwn6EhP0ICfsREvYjJOxHSNiPkLAfIWE/QsJ+hIT9CAn7ERL2IyTsR0jYj5CwHyFhP0LCfoSE/QgJ+xES9iMk7EdI2I+QsB8hYT9Cwn6EhP0ICfsREvYjJOxHSNiPkLAfIWE/QsJ+hIT9CAn7ERL2IyTsR0jYj5CwHyFhP0LCfoSE/QgJ+xES9iMk7EdI2I+QsB8hYT9Cwn6EhP0ICfsREvYjJOxHSNiPkLAfIWE/wn3hAxjiJcz3LgSTAAAAAElFTkSuQmCC" alt="" style="display: none;">
+        <img id="hand1" class="hand1" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Draw-1-black-line.svg/744px-Draw-1-black-line.svg.png" alt="" style="display: none;">
+        <img id="hand2" class="hand2" src="https://www.pets-n-friends.com/image.edit/imagelibrary/petsnfriends/shapes/line_45_007_black.png" alt="" style="display: none;">
+        <img class="leg1" id="leg1" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Draw-1-black-line.svg/744px-Draw-1-black-line.svg.png" alt="" style="display: none;">
+        <img id="leg2" class="leg2" src="https://www.pets-n-friends.com/image.edit/imagelibrary/petsnfriends/shapes/line_45_007_black.png" alt="" style="display: none;">
+    </div>
+    <br>
+    <div class="container">
+        <h2>Hangman</h2>
+        <p>Guess your word and put it<code> below </code> to start guessing</p>
+        <div class="progress">
+            <div id="progess" class="progress-bar progress-bar-striped" style="width:0%"></div>
+          </div>
+        <form class="was-validated">
+          <div class="form-group">
+            <label for="uname">Your Guess:</label>
+            <input id="guess" type="text" class="form-control" id="uname" placeholder="Enter guess" name="uname" required>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+          </div>
+          <div class="form-group form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" name="remember" required> I agree on the <a href="lol.html">Terms and Conditions</a>
+              <div class="valid-feedback">Valid.</div>
+              <div class="invalid-feedback">Check this checkbox to continue.</div>
+            </label>
+          </div>
+          <button type="button" onclick="check()">Submit</button>
+        </form>
+      </div>
+</body>
+ <script>
+        let play = 0;
+        let word =  document.getElementById("bold");
+        let guess = document.getElementById("guess")
+        let score = 0;
+        let face =  document.getElementById("face")
+        let facewitheyes =  document.getElementById("facewitheyes")
+        let nose = document.getElementById("nose")
+        let smile = document.getElementById("smile")
+        let line = document.getElementById("line")
+        let hand1 = document.getElementById("hand1")
+        let hand2 = document.getElementById("hand2")
+        let leg1 = document.getElementById("leg1")
+        let leg2 = document.getElementById("leg2")
+        let line2 = document.getElementById("line2")
+        let loss =  0;
+        let progess = document.getElementById("progess")
+ function myFunction(){
+
+    window.stop();
+    word.innerHTML = "J_mp";  
+ }
+ function check(){
+  
+    
+    if (play==0) {
+        if (guess.value =="Jump")
+        {
+            play +=1
+            word.innerHTML = "B_t_l_";  
+            console.log('es')
+            progess.style.width = "12.5%"
+            console.log(progess)
+        }
+        else{
+            word.innerHTML = "B_t_l_";  
+            facewitheyes.style.display = "block"
+           
+            play+=1
+            console.log(play)
+            progess.style.width = "12.5%"
+            console.log('es')
+            loss+=1
+        
+        }
+     }
+
+    else if(play==1){
+        if (guess.value =="Bottle")
+        {
+        
+            play +=1 
+            progess.style.width = "25%"
+
+            word.innerHTML = "_at_r";  
+        }
+        else{
+            
+            nose.style.display = "block"
+            word.innerHTML = "_at_r";  
+            play+=1
+            console.log(play)
+            loss+=1
+            progess.style.width = "25%"
+        } 
+    
+    }
+        else if(play==2){
+        if (guess.value =="Water")
+        {
+            progess.style.width ="37.5%"
+            play +=1
+            word.innerHTML = "ETRONIVNMNE";  
+        }
+        else{
+            progess.style.width ="37.5%"
+            smile.style.display = "block"
+            word.innerHTML = "ETRONIVNMNE";  
+            play+=1
+            console.log(play)
+            loss+=1
+        } 
+    }
+
+    else if(play==3){
+        if (guess.value =="ENVIRONMENT" ||guess.value =="Environment")
+        {
+            progess.style.width ="50%"
+            play +=1
+            word.innerHTML = "ATEPLHEN";  
+        }
+        else{
+            progess.style.width ="50%"
+           line.style.display = "block"
+            word.innerHTML = "ATEPLHEN";  
+            play+=1
+            console.log(play)
+            loss+=1
+        } }
+
+ 
+ 
+      else if(play==4){
+        if (guess.value =="ELEPHANT" || guess.value =="Elephant")
+        {
+            progess.style.width ="62.5%"
+            play +=1
+            word.innerHTML = "EMEERTRUAPT";  
+        }
+        else{
+            progess.style.width  = "62.5%"
+           hand1.style.display = "block"
+            word.innerHTML = "EMEERTRUAPT";  
+            play+=1
+            console.log(play)
+            loss+=1
+        } 
+    }
+ 
+
+ else if(play==5){
+        if (guess.value =="Temperature" || guess.value =="TEMPERATURE")
+        {
+            progess.style.width= "75%"
+            play +=1
+            word.innerHTML = "NICNTETON";  
+        }
+        else{
+            progess.style.width ="75%"
+           hand2.style.display = "block"
+            word.innerHTML = "NICNTETON";  
+            play+=1
+            console.log(play)
+            loss+=1
+        } 
+    }
+
+else if(play==6){
+        if (guess.value =="CONTINENT" || guess.value =="Continent")
+        {
+            progess.style.width = "87.5%"
+            play +=1
+            word.innerHTML = "NPALMTIU";  
+        }
+        else{
+            progess.style.width = "87.5%"
+           leg1.style.display = "block"
+            word.innerHTML ="NPALMTIU";  
+            play+=1
+            console.log(play)
+            loss+=1
+        } 
+    }
+    else if(play==7){
+        if (guess.value =="PLATINUM" || guess.value =="Platinum")
+        {
+            progess.style.width ="100%"
+            play +=1
+            word.innerHTML = "EOKSLENT";  
+        }
+        else{
+            progess.style.width = "100%"
+           leg2.style.display = "block"
+            word.innerHTML = "EOKSLENT";  
+            play+=1
+            console.log(play)
+            loss+=1
+        } 
+    }
+else if(play==8){
+        if (guess.value.toLowerCase()=="skeleton")
+        {
+            progess.style.width = "112.5%"
+            play +=1
+            word.innerHTML = "PERCSOICMO";  
+        }
+        else{
+            progess.style.width  = "112.5%"
+           line2.style.display = "block"
+            word.innerHTML = "PERCSOICMO";  
+            play+=1
+            console.log(play)
+            loss+=1
+        } 
+    }
+    else if(play==9){
+        if (guess.value =="MICROSCOPE" || guess.value =="Microscope")
+        {
+            progess.style.width="125%"
+            
+            word.innerHTML = "All done! REFRESH TO START AGAIN!";  
+        }
+        else{
+            progess.style.width ="125%"
+        
+            word.innerHTML = "HANGMAN! YOU LOST, REFRESH TO START AGAIN!";  
+           
+        } 
+    }
+}
+     
+ 
+        
+
+ </script>
+
+</html>
